@@ -29,7 +29,7 @@ class Registro extends Component {
             if (loginResponse?.success) {
                 console.log("registro")
                 setToken(loginResponse.data.data.token);
-                this.props.history.push("/Consular");
+                this.props.history.push("/Tareas");
             }
         }
     };
@@ -64,7 +64,7 @@ class Registro extends Component {
                         type="password"
                         onChange={(event) => this.handleOnInputChange("password", event)}
                     />
-                    <button className="bg-green-400 border-4 border-green-600 rounded-xl p-1 text-white" onClick={() => this.handleRegistro()}>Iniciar sesión</button>
+                    <button className="bg-green-400 border-4 border-green-600 rounded-xl p-1 text-white" onClick={() => this.handleRegistro()}>Registrar</button>
 
                 </div>
             </div>

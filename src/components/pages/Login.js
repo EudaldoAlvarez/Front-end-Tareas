@@ -30,10 +30,6 @@ class Login extends Component {
   componentDidMount() {
     console.log("Login did mount");
   }
-
-  handleTest = () => {
-    this.props.history.push("/secret");
-  };
   handleRegistro = () => {
     this.props.history.push("/registro")
   }

@@ -33,7 +33,7 @@ export const loginService = async (email, password) => {
 
 export const registroService = async (email, password) => {
   let response = {
-    succes: true,
+    success: true,
     data: {},
   };
   try {
