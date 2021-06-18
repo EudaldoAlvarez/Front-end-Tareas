@@ -23,7 +23,7 @@ class Login extends Component {
     let loginResponse = await loginService(email, password);
     if (loginResponse?.success) {
       setToken(loginResponse.data.data.token);
-      this.props.history.push("/Consular");
+      this.props.history.push("/Tareas");
     }
   };
 
@@ -34,26 +34,34 @@ class Login extends Component {
   handleTest = () => {
     this.props.history.push("/secret");
   };
+  handleRegistro = () => {
+    this.props.history.push("/registro")
+  }
 
   render() {
     return (
-      <div className="Container">
-        <div className="Formulario">
+      <div className="bg-gradient-to-r from-blue-500 via-blue-900 to-black w-screen h-screen text-center">
+        <div className="Formulario font-mono inline-block w-1/3 mx-auto  space-y-3 space-x-3 border-4">
+          <div className="full inline-flex">
+          <h2 className="text-white text-xl w-1/2 p-auto bg-green-400">Iniciar Sesion</h2>
+          <button className="  " onClick={this.handleRegistro}>Resgistrar aquí</button>
 
-          <h2 className="Titulo">Iniciar Sesion</h2>
+          </div>
           <input
+          className="w-full"
             placeholder="email"
             type="email"
+            required
             onChange={(event) => this.handleOnInputChange("email", event)}
           />
           <input
+          className="w-full"
             placeholder="Password"
             type="password"
             onChange={(event) => this.handleOnInputChange("password", event)}
           />
-          <span className="Registro">Resgistrar aquí</span>
-          <button onClick={this.handleLogin}>Iniciar sesión</button>
-          
+          <button className="bg-green-400 border-4 border-green-600 rounded-xl p-1 text-white" onClick={this.handleLogin}>Iniciar sesión</button>
+
         </div>
       </div>
     );

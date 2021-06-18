@@ -6,8 +6,8 @@ class Borrar extends Component {
     render() {
         return (
             <button
-                className="BotonBorrar"
-                onClick={this.props.onClick}>
+                className="bg-red-400 border-red-500 border-2 rounded-lg hover:bg-red-500 cursor-pointer p-1"
+                onClick={this.props.borrar}>
                 Borrar
             </button>
         );

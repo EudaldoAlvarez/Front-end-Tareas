@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-// import axios from "axios";
-// import { loginService, tareasConsultar } from "../../utils/api/services";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 import { getToken } from "../../../utils/auth/Token";
 import Tarea from "../../molecules/Tareas/Tarea";
 import axios from "axios";
+import * as moment from "moment";
 
 class Tareas extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tareas: []
+            tareas: [{
+                id: "",
+                titulo: "Esto es un titulo",
+                descripcion: "Esto es una descripcion",
+                fecha_inicio: "",
+                fecha_fin: "",
+            }]
         };
     }
 
@@ -21,7 +26,8 @@ class Tareas extends Component {
             }
         }).then(res => {
             const tareas = res.data.data;
-            this.setState({ tareas });
+            if (tareas?.length) { this.setState({ tareas }); }
+
         }).catch((error) => {
             console.log(error.response.data);
         })
@@ -40,35 +46,35 @@ class Tareas extends Component {
             console.log(error.response);
         })
     }
-    handleEditar() {
-
+    
+    handleActivar(){
+        
     }
     render() {
         console.log(this.state.tareas);
         return (
-            <div>
-                <div>
-                    <input></input>
-                    <input id="fechaFin" type="datetime-local"></input>
-                </div>
-                <table>
+            <div className=" w-2/3 ml-2 h-screen overflow-y-auto">
+                <table className="rounded-xl">
                     <tbody>
-                        <tr>
-                            <th>Titulo</th>
+                        <tr className="bg-black rounded-l-md text-white text-lg">
+                            <th className="rounded-l-md">Titulo</th>
                             <th>Descripcion</th>
                             <th>Fecha inicio</th>
                             <th>Fecha Fin</th>
+                            <th className="rounded-r-md">Acciones</th>
                         </tr>
                         {this.state.tareas.map(tarea => {
+                            let fecha_inicio_Format = moment(tarea.fecha_inicio).format('DD-MM-YYYY hh:mm');
+                            let fecha_fin_Format = moment(tarea.fecha_fin).format('DD-MM-YYYY hh:mm');
                             return (
                                 <Tarea
                                     key={`tarea-${tarea.id}`}
                                     titulo={tarea.titulo}
                                     descripcion={tarea.descripcion}
-                                    fecha_inicio={tarea.fecha_inicio}
-                                    fecha_fin={tarea.fecha_fin}
-                                    tarea={tarea}
-                                    onClick={() => this.handleBorrar(tarea.id)}
+                                    fecha_inicio={fecha_inicio_Format}
+                                    fecha_fin={fecha_fin_Format}
+                                    borrar={() => this.handleBorrar(tarea.id)}
+                                    id={tarea.id}
                                 />
                             )
                         })}
@@ -79,4 +85,4 @@ class Tareas extends Component {
     }
 }
 
-export default withRouter(Tareas);
+export default Tareas;

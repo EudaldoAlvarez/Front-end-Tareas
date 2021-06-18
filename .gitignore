@@ -23,3 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 yarn.lock
+package.json
+postcss.config.js
+package.json
+tailwind.config.js
+yarn.lock

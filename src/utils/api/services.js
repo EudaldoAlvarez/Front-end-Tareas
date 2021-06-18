@@ -31,6 +31,22 @@ export const loginService = async (email, password) => {
   return returnResponse(response);
 };
 
+export const registroService = async (email, password) => {
+  let response = {
+    succes: true,
+    data: {},
+  };
+  try {
+    const data = { email, password };
+    const dataResponse = await axios.post(`${apiUrl}/usuarios/sign-up`, data);
+    response.data = dataResponse.data;
+  } catch (error) {
+    response.success = false;
+    response.data = error?.response?.data;
+  }
+  return returnResponse(response);
+}
+
 export const isAuthService = async () => {
   const token = getToken();
   let response = {

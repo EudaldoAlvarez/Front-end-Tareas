@@ -1,35 +1,46 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/pages/Login";
-import TablaTareas from "./components/organisms/Tareas/TablaTareas"
+import Registro from "./components/pages/Registro";
 import PrivateRoute from "./utils/auth/PrivateRoute";
+import Tareas from  "./components/pages/Tareas";
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route
-        path="/"
-        exact
+          path="/"
+          exact
           component={() => (
             <PrivateRoute
-              redirect="/Consultar"
+              redirect="/Tareas"
               userShouldBeAuth={false}
               component={<Login />}
             />
           )}
         />
         <Route
-        path="/Consultar" 
-        exact
+          path="/Tareas"
+          exact
           component={() => (
             <PrivateRoute
               redirect="/"
               userShouldBeAuth={true}
-              component={<TablaTareas />}
+              component={<Tareas />}
             />
           )}
         />
-
+        <Route
+          path="/registro"
+          exact
+          component={() => (
+            <PrivateRoute
+              redirect="/"
+              userShouldBeAuth={false}
+              component={<Registro/>}
+            />
+          )}
+        />
       </Switch>
     </Router>
   );

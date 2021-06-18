@@ -5,7 +5,7 @@ class Titulo extends Component {
 
     render() {
         return (
-            <div className="Titulo">
+            <div className="p-2">
                 {this.props.data}
             </div>
         );
