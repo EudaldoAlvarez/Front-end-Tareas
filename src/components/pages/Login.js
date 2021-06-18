@@ -40,22 +40,22 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="bg-gradient-to-r from-blue-500 via-blue-900 to-black w-screen h-screen text-center">
-        <div className="Formulario font-mono inline-block w-1/3 mx-auto  space-y-3 space-x-3 border-4">
-          <div className="full inline-flex">
-          <h2 className="text-white text-xl w-1/2 p-auto bg-green-400">Iniciar Sesion</h2>
-          <button className="  " onClick={this.handleRegistro}>Resgistrar aquí</button>
+      <div className="bg-gradient-to-r from-blue-500 via-blue-900 to-black w-screen h-screen  text-center content-center">
+        <div className="Formulario font-mono inline-block w-1/3 mx-auto  space-y-3  border-4 mt-52 p-6 rounded-xl">
+          <div className="w-full inline-flex bg-green-300 rounded-lg">
+            <h2 className="underline text-xl rounded-l-lg w-1/2 p-auto bg-green-400">Iniciar Sesion</h2>
+            <button className="text-xl  text-white hover:undeline" onClick={this.handleRegistro}>Resgistrar aquí</button>
 
           </div>
           <input
-          className="w-full"
+            className="w-full"
             placeholder="email"
             type="email"
             required
             onChange={(event) => this.handleOnInputChange("email", event)}
           />
           <input
-          className="w-full"
+            className="w-full"
             placeholder="Password"
             type="password"
             onChange={(event) => this.handleOnInputChange("password", event)}

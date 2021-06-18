@@ -54,7 +54,7 @@ class Tareas extends Component {
         console.log(this.state.tareas);
         return (
             <div className=" w-2/3 ml-2 h-screen overflow-y-auto">
-                <table className="rounded-xl">
+                <table className="rounded-xl min-w-full">
                     <tbody>
                         <tr className="bg-black rounded-l-md text-white text-lg">
                             <th className="rounded-l-md">Titulo</th>
