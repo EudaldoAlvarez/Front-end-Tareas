@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/pages/Login";
-import Secret from "./components/pages/Secret";
+import TablaTareas from "./components/organisms/Tareas/TablaTareas"
 import PrivateRoute from "./utils/auth/PrivateRoute";
 
 function App() {
@@ -8,24 +8,28 @@ function App() {
     <Router>
       <Switch>
         <Route
-          path="/"
-          exact
+        path="/"
+        exact
           component={() => (
             <PrivateRoute
-              redirect="/secret"
+              redirect="/Consultar"
               userShouldBeAuth={false}
               component={<Login />}
             />
           )}
         />
-        <Route path="/public">
-          <h1>Publico</h1>
-        </Route>
         <Route
-          component={() => <PrivateRoute redirect="/" component={<Secret />} />}
-        >
-          {/* <Secret /> */}
-        </Route>
+        path="/Consultar" 
+        exact
+          component={() => (
+            <PrivateRoute
+              redirect="/"
+              userShouldBeAuth={true}
+              component={<TablaTareas />}
+            />
+          )}
+        />
+
       </Switch>
     </Router>
   );

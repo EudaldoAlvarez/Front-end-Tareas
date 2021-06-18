@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { loginService } from "../../utils/api/services";
 import { withRouter } from "react-router-dom";
 import { setToken } from "../../utils/auth/Token";
-
+import "../../css/Login/login.css"
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +23,7 @@ class Login extends Component {
     let loginResponse = await loginService(email, password);
     if (loginResponse?.success) {
       setToken(loginResponse.data.data.token);
-      this.props.history.push("/secret");
+      this.props.history.push("/Consular");
     }
   };
 
@@ -38,20 +37,25 @@ class Login extends Component {
 
   render() {
     return (
-      <>
-        <input
-          placeholder="email"
-          type="email"
-          onChange={(event) => this.handleOnInputChange("email", event)}
-        />
-        <input
-          placeholder="Password"
-          type="password"
-          onChange={(event) => this.handleOnInputChange("password", event)}
-        />
-        <button onClick={this.handleLogin}>Iniciar sesión</button>
-        <button onClick={this.handleTest}>TEST</button>
-      </>
+      <div className="Container">
+        <div className="Formulario">
+
+          <h2 className="Titulo">Iniciar Sesion</h2>
+          <input
+            placeholder="email"
+            type="email"
+            onChange={(event) => this.handleOnInputChange("email", event)}
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            onChange={(event) => this.handleOnInputChange("password", event)}
+          />
+          <span className="Registro">Resgistrar aquí</span>
+          <button onClick={this.handleLogin}>Iniciar sesión</button>
+          
+        </div>
+      </div>
     );
   }
 }
